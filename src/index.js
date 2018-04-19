@@ -1,8 +1,8 @@
 import fs from 'fs-extra';
 import axios from 'axios';
+import zipcodes from 'zipcodes';
 
 export default async function() {
-  const zipcodes = require('zipcodes');
   let arr = [];
   Object.keys(zipcodes.states.abbr).map(async state => {
     const result = await axios.get(
@@ -16,5 +16,5 @@ export default async function() {
     // }
     arr.push(result);
   });
-  console.log(arr);
+  console.log('ARR --> ', arr);
 }
