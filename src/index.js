@@ -16,7 +16,7 @@ export default async function() {
     // Loop through dealers and create file name by zip with contents of dealer
     // This will override older files, so essentailly "updating" it as well
     result.data.dealers.map(async dealer => {
-      fs.writeFile(`${__dirname}/dist/JSON/${dealer.zip}.JSON`, dealer);
+      await fs.writeFile(`${__dirname}/dist/JSON/${dealer.zip}.JSON`, dealer);
     });
   });
 }
