@@ -2,7 +2,7 @@ import fs from 'fs-extra';
 import axios from 'axios';
 import zipcodes from 'zipcodes';
 
-export default async function() {
+const fetchDealers = async function() {
   // if folder does not exist create JSON folder
   if (await !fs.readdir(__dirname, '/dist/JSON')) {
     await fs.mkdir(__dirname + '/dist/JSON');
@@ -19,4 +19,6 @@ export default async function() {
       await fs.writeFile(__dirname + `/dist/JSON/${dealer.zip}.JSON`, dealer);
     });
   });
-}
+};
+
+fetchDealers();
