@@ -1,20 +1,13 @@
 import fs from 'fs-extra';
+import axios from 'axios';
 
 export default async function() {
   const zipcodes = require('zipcodes');
   let arr = [];
   Object.keys(zipcodes.states.abbr).map(async state => {
-    const result = await fetch(
-      `https://apis.escaladesports.com/v1/dealers/territory/goalrilla/state/${state}
-      `,
-      {
-        method: 'GET',
-        credentials: 'same-origin',
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      }
-    ).then(res => res.json());
+    const result = await axios.get(
+      `https://apis.escaladesports.com/v1/dealers/territory/goalrilla/state/${state}`
+    );
     // await fs.mkdir(__dirname + '/dist/JSON');
     // if (fs.readdir(__dirname + '/dist/JSON')) {
     // loop through zip codes here
