@@ -4,8 +4,8 @@ import zipcodes from 'zipcodes';
 
 export default async function() {
   // if folder does not exist create JSON folder
-  if (await !fs.readdir('JSON')) {
-    await fs.mkdir('JSON');
+  if (await !fs.readdir(__dirname, '/dist/JSON')) {
+    await fs.mkdir(__dirname + '/dist/JSON');
   }
 
   // Loop through states and pass into dealer API
@@ -16,7 +16,7 @@ export default async function() {
     // Loop through dealers and create file name by zip with contents of dealer
     // This will override older files, so essentailly "updating" it as well
     result.data.dealers.map(async dealer => {
-      await fs.writeFile(`JSON/${dealer.zip}.JSON`, dealer);
+      await fs.writeFile(__dirname + `/dist/JSON/${dealer.zip}.JSON`, dealer);
     });
   });
 }
