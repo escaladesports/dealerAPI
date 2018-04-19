@@ -4,7 +4,7 @@ import zipcodes from 'zipcodes';
 
 const fetchDealers = async function() {
   // if folder does not exist create JSON folder
-  if (await !fs.readdir(__dirname, '/dist/JSON')) {
+  if (await !fs.readdir(__dirname + '/dist/JSON')) {
     await fs.mkdir(__dirname + '/dist/JSON');
   }
 
@@ -16,7 +16,9 @@ const fetchDealers = async function() {
     // Loop through dealers and create file name by zip with contents of dealer
     // This will override older files, so essentailly "updating" it as well
     result.data.dealers.map(async dealer => {
-      await fs.writeFile(__dirname + `/dist/JSON/${dealer.zip}.JSON`, dealer);
+      if ((await fs.readdir(__dirname + '/dist/JSON')) && dealer.zip) {
+        await fs.writeFile(__dirname + `/dist/JSON/${dealer.zip}.JSON`, dealer);
+      }
     });
   });
 };
