@@ -14,6 +14,7 @@ export default async function() {
     // make fetch call for each zip code here
     // fs.writeFile(`${__dirname}/dist/JSON/${zip}.JSON`, res.data.zip) for each zipcode
     // }
+    console.log(result);
     arr.push(result);
   });
   console.log('ARR --> ', arr);
