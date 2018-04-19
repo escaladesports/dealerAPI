@@ -3,8 +3,7 @@ import axios from 'axios';
 import zipcodes from 'zipcodes';
 
 export default async function() {
-  let arr = [];
-  Object.keys(zipcodes.states.abbr).map(async state => {
+  return Object.keys(zipcodes.states.abbr).map(async state => {
     const result = await axios.get(
       `https://apis.escaladesports.com/v1/dealers/territory/goalrilla/state/${state}`
     );
@@ -14,8 +13,7 @@ export default async function() {
     // make fetch call for each zip code here
     // fs.writeFile(`${__dirname}/dist/JSON/${zip}.JSON`, res.data.zip) for each zipcode
     // }
-    console.log(result);
-    arr.push(result);
+    console.log(result.data.dealers);
+    return result.data.dealers;
   });
-  console.log('ARR --> ', arr);
 }
