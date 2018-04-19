@@ -1,8 +1,10 @@
 import fs from 'fs-extra';
 
 export default async function() {
-  const dealer = async state => {
-    return await fetch(
+  const zipcodes = require('zipcodes');
+  let arr = [];
+  Object.keys(zipcodes.states.abbr).map(async state => {
+    const result = await fetch(
       `https://apis.escaladesports.com/v1/dealers/territory/goalrilla/state/${state}
       `,
       {
@@ -13,12 +15,6 @@ export default async function() {
         }
       }
     ).then(res => res.json());
-  };
-
-  const zipcodes = require('zipcodes');
-  let arr = [];
-  Object.keys(zipcodes.states.abbr).map(async state => {
-    const result = await dealer(state);
     // await fs.mkdir(__dirname + '/dist/JSON');
     // if (fs.readdir(__dirname + '/dist/JSON')) {
     // loop through zip codes here
