@@ -7,7 +7,7 @@ const fetchDealers = async function() {
   await fs.outputJson(path.resolve(__dirname, '../dist/JSON/testFile.json'), {
     name: 'Taylor'
   });
-  await Object.keys(zipcodes.states.abbr).map(async state => {
+  Object.keys(zipcodes.states.abbr).map(async state => {
     const result = await axios.get(
       `https://apis.escaladesports.com/v1/dealers/territory/goalrilla/state/${state}`
     );
@@ -17,6 +17,7 @@ const fetchDealers = async function() {
         path.resolve(__dirname, `../dist/JSON/${dealer.zip}.json`),
         dealer
       );
+      console.log(path.resolve(__dirname, `../dist/JSON/${dealer.zip}.json`));
     });
   });
 };
