@@ -4,7 +4,9 @@ import axios from 'axios';
 import zipcodes from 'zipcodes';
 
 const fetchDealers = async function() {
-  await fs.mkdir(path.resolve(__dirname, '../dist/JSON'));
+  await fs.outputJson(
+    path.resolve(__dirname, '../dist/JSON/testFile.json', { name: 'Taylor' })
+  );
   // Object.keys(zipcodes.states.abbr).map(async state => {
   //   const result = await axios.get(
   //     `https://apis.escaladesports.com/v1/dealers/territory/goalrilla/state/${state}`
