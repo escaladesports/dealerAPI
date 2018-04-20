@@ -1,12 +1,7 @@
 {
   "name": "dealerAPI",
   "version": "0.0.2",
-  "keywords": [
-    "javascript",
-    "node",
-    "module",
-    "boilerplate"
-  ],
+  "keywords": ["javascript", "node", "module", "boilerplate"],
   "main": "dist/index.js",
   "browser": "dist-browser/index.js",
   "author": "Taylor Austin <taustin@escaladesports.com>",
@@ -17,14 +12,19 @@
   "license": "MIT",
   "scripts": {
     "analyze": "esca-scripts analyze --input './src/inject.js' --browser",
-    "build": "run-p build:main build:browser",
-    "build:main": "esca-scripts build --input src --output dist --babel --multiple",
-    "build:browser": "esca-scripts build --input './src/index.js' --output './dist-browser/index.js' --component --browser --minify --name moduleBoilerplate",
-    "dev": "esca-scripts dev ---input './dev/dev.js, ./dev/index.html' --browser",
+    "build": "run-p build:node build:main build:browser",
+    "build:node": "node ./src/index.js",
+    "build:main":
+      "esca-scripts build --input src --output dist --babel --multiple",
+    "build:browser":
+      "esca-scripts build --input './src/index.js' --output './dist-browser/index.js' --component --browser --minify --name moduleBoilerplate",
+    "dev":
+      "esca-scripts dev ---input './dev/dev.js, ./dev/index.html' --browser",
     "prepublishOnly": "npm run build",
     "reset": "esca-scripts reset",
     "test": "esca-scripts test",
-    "travis": "opn https://travis-ci.org/escaladesports/javascript-module-boilerplate/branches"
+    "travis":
+      "opn https://travis-ci.org/escaladesports/javascript-module-boilerplate/branches"
   },
   "devDependencies": {
     "esca-scripts": "^0.14.1",
