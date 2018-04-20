@@ -18,8 +18,7 @@ const fetchDealers = async function() {
     // This will override older files, so essentailly "updating" it as well
     result.data.dealers.map(async dealer => {
       if ((await fs.readdir(__dirname + '/dist/JSON')) && dealer.zip) {
-        console.log('FILE CREATED WITH ZIPCODE');
-
+        console.log('FILE CREATED WITH ZIPCODE...');
         await fs.writeFile(__dirname + `/dist/JSON/${dealer.zip}.JSON`, dealer);
       }
     });
