@@ -18,9 +18,8 @@ const fetchDealers = async function() {
   //   });
   // });
 };
-console.log('directory name --> ', path.resolve(__dirname, '../'));
 
 fetchDealers().then(async () => {
-  const rootFolder = await fs.readdir(path.resolve(__dirname, '../dist'));
-  console.log('List all directories inside of dist -->', rootFolder);
+  const rootFolder = await fs.readdir(path.resolve(__dirname, '../dist/JSON'));
+  console.log('List all directories inside of JSON -->', rootFolder);
 });
