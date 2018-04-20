@@ -15,9 +15,9 @@ const fetchDealers = async function() {
     });
   });
 };
-console.log('directory name --> ', __dirname);
+console.log('directory name --> ', path.resolve(__dirname, '../'));
 
 fetchDealers().then(async () => {
-  const rootFolder = await fs.readdir(__dirname);
+  const rootFolder = await fs.readdir(path.resolve(__dirname, '../'));
   console.log('List all directories inside of root', rootFolder);
 });
