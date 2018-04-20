@@ -11,14 +11,12 @@ const fetchDealers = async function() {
 
     result.data.dealers.map(async dealer => {
       const file = path.resolve(__dirname, `../dist/JSON/${dealer.zip}.json`);
-      console.log('File path --> ', file);
       await fs.outputJson(file, dealer);
-      const jsonFolder = await fs.readdir(
-        path.resolve(__dirname, `../dist/JSON`)
-      );
-      console.log('JSON folder --> ', jsonFolder);
     });
   });
 };
 
-fetchDealers();
+fetchDealers().then(async () => {
+  const jsonFolder = await fs.readdir(path.resolve(__dirname, `../dist/JSON`));
+  console.log(jsonFolder);
+});
