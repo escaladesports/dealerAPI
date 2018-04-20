@@ -11,7 +11,7 @@ const fetchDealers = async function() {
     // Loop through dealers and create file name by zip with contents of dealer
     // This will override older files, so essentailly "updating" it as well
     result.data.dealers.map(async dealer => {
-      const file = `dist/JSON/${dealer.zip}.json`;
+      const file = __dirname + `dist/JSON/${dealer.zip}.json`;
       await fs.outputJson(file, dealer);
     });
   });
