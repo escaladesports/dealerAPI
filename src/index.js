@@ -1,4 +1,5 @@
 import fs from 'fs-extra';
+import path from 'path';
 import axios from 'axios';
 import zipcodes from 'zipcodes';
 
@@ -9,7 +10,7 @@ const fetchDealers = async function() {
     );
 
     result.data.dealers.map(async dealer => {
-      const file = __dirname + `dist/JSON/${dealer.zip}.json`;
+      const file = path.resolve(__dirname, `../dist/JSON/${dealer.zip}.json`);
       await fs.outputJson(file, dealer);
     });
   });

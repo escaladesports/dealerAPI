@@ -13,7 +13,7 @@
   "scripts": {
     "analyze": "esca-scripts analyze --input './src/inject.js' --browser",
     "build": "run-p build:node build:main build:browser",
-    "build:node": "esca-scripts node ./src/index.js",
+    "build:node": "babel-node ./src/index.js",
     "build:main":
       "esca-scripts build --input src --output dist --babel --multiple",
     "build:browser":
