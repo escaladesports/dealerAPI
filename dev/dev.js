@@ -1,3 +1,5 @@
 import zipcodes from 'zipcodes';
 
-console.log(zipcodes.lookupByState('in'));
+zipcodes.lookupByState('in').map(zipCode => {
+  console.log(zipCode);
+});
