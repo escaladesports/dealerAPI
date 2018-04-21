@@ -12,19 +12,51 @@ const fetchDealersByState = async function() {
         state.abbr
       }`
     );
-    console.log(Object.keys(result.data['in']));
-    // result.data.dealers.map(async dealer => {
-    //   await fs.outputJson(
-    //     path.resolve(__dirname, `../dist/JSON/${dealer.zip}.json`),
-    //     dealer
-    //   );
-    // });
+    await fs.outputJson(
+      path.resolve(__dirname, `../dist/state/${state.abbr}.json`),
+      result.data[state.abbr]
+    );
   });
 };
 
-// const fetchDealersByCity = async function() {
+const fetchDealersByCity = async function() {
+  states.map(state => {
+    cities[state.name].map(async city => {
+      const result = await axios.get(
+        `https://apis.escaladesports.com/v1/dealers/territory/goalrilla/city/${city}`
+      );
 
-// }
+      console.log(result.data);
+    });
+  });
+};
+
+const fetchDealersByZip = async function() {
+  states.map(({ abbr }) => {
+    zipcodes.lookupByState(abbr).map(async zipCode => {
+      const result = await axios.get(
+        `https://apis.escaladesports.com/v1/dealers/territory/goalrilla/zip/${zipCode}/exact`
+      );
+
+      console.log(result.data);
+    });
+  });
+};
+
+const fetchDealerByZipProx = async function() {
+  const prox = [30, 50, 100];
+  states.map(({ abbr }) => {
+    zipcodes.lookupByState(abbr).map(zipCode => {
+      prox.map(async p => {
+        const result = await axios.get(
+          `https://apis.escaladesports.com/v1/dealers/territory/goalrilla/zip/${zipCode}/${p}`
+        );
+
+        console.log(result.data);
+      });
+    });
+  });
+};
 
 fetchDealersByState();
 // fetchDealersByCity()

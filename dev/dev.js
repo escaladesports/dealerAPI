@@ -1,2 +1,3 @@
-import states from 'united-states';
-console.log(states);
+import zipcodes from 'zipcodes';
+
+console.log(zipcodes.lookupByState('in'));
