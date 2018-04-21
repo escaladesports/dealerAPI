@@ -25,7 +25,10 @@ const fetchDealersByCity = async function() {
       const result = await axios.get(
         `https://apis.escaladesports.com/v1/dealers/territory/goalrilla/city/${city}`
       );
-
+      // await fs.outputJson(
+      //   path.resolve(__dirname, `../dist/city/${city}.json`),
+      //   result.data.dealers
+      // )
       console.log(result.data);
     });
   });
@@ -35,10 +38,14 @@ const fetchDealersByZip = async function() {
   states.map(({ abbr }) => {
     zipcodes.lookupByState(abbr).map(async zipCode => {
       const result = await axios.get(
-        `https://apis.escaladesports.com/v1/dealers/territory/goalrilla/zip/${zipCode}/exact`
+        `https://apis.escaladesports.com/v1/dealers/territory/goalrilla/zip/47711/exact`
       );
-
-      console.log(result.data);
+      // await fs.outputJson(
+      //   path.resolve(__dirname, `../dist/zip/${zipCode}.json`),
+      //   result.data.list
+      // )
+      console.log(result.data.list.length);
+      result.data.list.map(dealer => console.log(dealer));
     });
   });
 };
