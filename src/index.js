@@ -25,11 +25,10 @@ const fetchDealersByCity = async function() {
       const result = await axios.get(
         `https://apis.escaladesports.com/v1/dealers/territory/goalrilla/city/${city}`
       );
-      // await fs.outputJson(
-      //   path.resolve(__dirname, `../dist/city/${city}.json`),
-      //   result.data.dealers
-      // )
-      console.log(result.data.dealers.length);
+      await fs.outputJson(
+        path.resolve(__dirname, `../dist/city/${city}.json`),
+        result.data.dealers
+      );
     });
   });
 };
