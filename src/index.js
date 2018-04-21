@@ -7,12 +7,12 @@ import cities from './cities.json';
 
 const fetchDealersByState = async function() {
   states.map(async state => {
-    console.log(state.abbr);
-    // const result = await axios.get(
-    //   `https://apis.escaladesports.com/v1/dealers/territory/goalrilla/state/${
-    //     state.abbr
-    //   }`
-    // );
+    const result = await axios.get(
+      `https://apis.escaladesports.com/v1/dealers/territory/goalrilla/state/${
+        state.abbr
+      }`
+    );
+    console.log(result.data[state.abbr]);
     // await fs.outputJson(
     //   path.resolve(__dirname, `../dist/state/${state.abbr}.json`),
     //   result.data[state.abbr]
