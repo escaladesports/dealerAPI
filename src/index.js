@@ -12,7 +12,7 @@ const fetchDealersByState = async function() {
         state.abbr
       }`
     );
-    console.log(result.data);
+    console.log(result.data['in']);
     // result.data.dealers.map(async dealer => {
     //   await fs.outputJson(
     //     path.resolve(__dirname, `../dist/JSON/${dealer.zip}.json`),
