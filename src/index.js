@@ -64,7 +64,7 @@ const fetchDealersByZipProx = async function() {
   });
 };
 
-// fetchDealersByState();
-fetchDealersByCity();
+fetchDealersByState();
+// fetchDealersByCity();
 // fetchDealersByZip();
 // fetchDealersByZipProx();
