@@ -9,7 +9,7 @@ const fetchDealersByState = async function() {
   states.map(async state => {
     const result = await axios.get(
       `https://apis.escaladesports.com/v1/dealers/territory/goalrilla/state/${
-        state.name
+        state.abbr
       }`
     );
     console.log(result.data);
