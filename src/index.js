@@ -12,11 +12,10 @@ const fetchDealersByState = async function() {
         state.abbr
       }`
     );
-    console.log(result.data[state.abbr.toLowerCase()]);
-    // await fs.outputJson(
-    //   path.resolve(__dirname, `../dist/state/${state.abbr}.json`),
-    //   result.data[state.abbr]
-    // );
+    await fs.outputJson(
+      path.resolve(__dirname, `../dist/state/${state.abbr}.json`),
+      result.data.dealers
+    );
   });
 };
 
