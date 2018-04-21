@@ -66,5 +66,5 @@ const fetchDealersByZipProx = async function() {
 
 fetchDealersByState();
 fetchDealersByCity();
-fetchDealersByZip();
-fetchDealersByZipProx();
+// fetchDealersByZip();
+// fetchDealersByZipProx();
