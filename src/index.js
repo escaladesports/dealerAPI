@@ -49,10 +49,10 @@ const fetchDealersByZip = async function() {
   //   });
   // });
   const result = await axios.get(
-    `https://apis.escaladesports.com/v1/dealers/territory/goalrilla/zip/47711/exact`
+    `https://apis.escaladesports.com/v1/dealers/territory/goalrilla/zip/47715/exact`
   );
 
-  console.log(result.data);
+  console.log(result.data.list);
   // result.data.list.map(dealer => console.log(dealer));
 };
 
