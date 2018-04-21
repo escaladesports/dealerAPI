@@ -52,11 +52,11 @@ const fetchDealersByZip = async function() {
     `https://apis.escaladesports.com/v1/dealers/territory/goalrilla/zip/47711/exact`
   );
 
-  console.log(result.data.list.length);
-  result.data.list.map(dealer => console.log(dealer));
+  console.log(result.data);
+  // result.data.list.map(dealer => console.log(dealer));
 };
 
-const fetchDealerByZipProx = async function() {
+const fetchDealersByZipProx = async function() {
   const prox = [30, 50, 100];
   states.map(({ abbr }) => {
     zipcodes.lookupByState(abbr).map(zipCode => {
