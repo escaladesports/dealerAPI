@@ -13,7 +13,7 @@ const fetchDealers = async function() {
     for (let { abbr } of states) {
       promises.push(
         axios.get(
-          `https://apis.escaladesports.com/v1/dealers/territory/${brand}/state/${abbr}`
+          `https://apistest.escaladesports.com/v1/dealers/territory/${brand}/state/${abbr}`
         )
       );
     }
