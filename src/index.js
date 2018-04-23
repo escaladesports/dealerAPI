@@ -47,11 +47,11 @@ const fetchDealersByZip = function() {
   });
 };
 
-const fetchDealersByZipProx = function() {
+const fetchDealersByZipProx = async function() {
   const prox = [30, 50, 100];
   states.map(({ abbr }) => {
     zipcodes.lookupByState(abbr).map(({ zip }) => {
-      prox.map(async p => {
+      prox.map(p => {
         const result = await axios.get(
           `https://apis.escaladesports.com/v1/dealers/territory/goalrilla/zip/${zip}/${p}`
         );
@@ -64,7 +64,7 @@ const fetchDealersByZipProx = function() {
   });
 };
 
-fetchDealersByState();
+// fetchDealersByState();
 // fetchDealersByCity();
 // fetchDealersByZip();
-// fetchDealersByZipProx();
+fetchDealersByZipProx();
