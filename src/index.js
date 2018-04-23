@@ -3,26 +3,34 @@ import path from 'path';
 import axios from 'axios';
 import zipcodes from 'zipcodes';
 
-const fetchDealers = async function() {
-  await fs.outputJson(path.resolve(__dirname, '../dist/JSON/testFile.json'), {
-    name: 'Taylor'
-  });
-  Object.keys(zipcodes.states.abbr).map(async state => {
-    const result = await axios.get(
-      `https://apis.escaladesports.com/v1/dealers/territory/goalrilla/state/${state}`
-    );
+// const fetchDealers = async function() {
+//   await fs.outputJson(path.resolve(__dirname, '../dist/JSON/testFile.json'), {
+//     name: 'Taylor'
+//   });
+//   Object.keys(zipcodes.states.abbr).map(async state => {
+//     const result = await axios.get(
+//       `https://apis.escaladesports.com/v1/dealers/territory/goalrilla/state/${state}`
+//     );
 
-    result.data.dealers.map(async dealer => {
-      await fs.outputJson(
-        path.resolve(__dirname, `../dist/JSON/${dealer.zip}.json`),
-        dealer
-      );
-      console.log(path.resolve(__dirname, `../dist/JSON/${dealer.zip}.json`));
-    });
-  });
-};
+//     result.data.dealers.map(async dealer => {
+//       await fs.outputJson(
+//         path.resolve(__dirname, `../dist/JSON/${dealer.zip}.json`),
+//         dealer
+//       );
+//       console.log(path.resolve(__dirname, `../dist/JSON/${dealer.zip}.json`));
+//     });
+//   });
+// };
 
-fetchDealers().then(async () => {
-  const rootFolder = await fs.readdir(path.resolve(__dirname, '../dist/JSON'));
-  console.log('List all directories inside of JSON -->', rootFolder);
-});
+// fetchDealers().then(async () => {
+//   const rootFolder = await fs.readdir(path.resolve(__dirname, '../dist/JSON'));
+//   console.log('List all directories inside of JSON -->', rootFolder);
+// });
+axios
+  .get(
+    'https://apis.escaladesports.com/v1/dealers/territory/goalrilla/state/in'
+  )
+  .then(data => {
+    console.log(data.data.dealers);
+  })
+  .catch(err => console.log(err));
