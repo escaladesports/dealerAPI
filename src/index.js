@@ -33,23 +33,19 @@ const fetchDealersByCity = function() {
   });
 };
 
-const fetchDealersByZip = async function() {
-  // states.map(({ abbr }) => {
-  //   zipcodes.lookupByState(abbr).map(async ({ zip }) => {
-  //     const result = await axios.get(
-  //       `https://apis.escaladesports.com/v1/dealers/territory/goalrilla/zip/${zip}/exact`
-  //     );
-  //     await fs.outputJson(
-  //       path.resolve(__dirname, `../dist/zip/${zip}.json`),
-  //       result.data.list
-  //     );
-  //   });
-  // });
-  const result = await axios.get(
-    'https://apis.escaladesports.com/v1/dealers/territory/goalrilla/zip/47715/exact'
-  );
-
-  console.log(result.data.list);
+const fetchDealersByZip = function() {
+  states.map(({ abbr }) => {
+    zipcodes.lookupByState(abbr).map(async ({ zip }) => {
+      const result = await axios.get(
+        `https://apis.escaladesports.com/v1/dealers/territory/goalrilla/zip/${zip}/exact`
+      );
+      console.log(result.data.list.length);
+      // await fs.outputJson(
+      //   path.resolve(__dirname, `../dist/zip/${zip}.json`),
+      //   result.data.list
+      // );
+    });
+  });
 };
 
 const fetchDealersByZipProx = function() {
