@@ -1,5 +1,8 @@
-import zipcodes from 'zipcodes';
+import axios from 'axios';
 
-zipcodes.lookupByState('in').map(({ zip }) => {
-  console.log(zip); // logs out all zips for Indiana
-});
+axios
+  .get(
+    'https://apis.escaladesports.com/v1/dealers/territory/goalrilla/state/ar'
+  )
+  .then(res => console.log(res.data.dealers))
+  .catch(err => console.log(err));

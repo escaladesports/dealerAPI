@@ -6,15 +6,21 @@ import zipcodes from 'zipcodes';
 import states from 'united-states';
 import brands from '../config/brands';
 
-const fetchDealersByZip = async function() {
+const fetchDealers = async function() {
   let data = [];
   for (let brand of brands) {
     for (let { abbr } of states) {
-      for (let { zip } of zipcodes.lookupByState(abbr)) {
-        let result = await axios.get(
-          `https://apis.escaladesports.com/v1/dealers/territory/${brand}/zip/${zip}/exact`
-        );
-        data.concat(result.data.list);
+      let result = await axios.get(
+        `https://apis.escaladesports.com/v1/dealers/territory/${brand}/state/${abbr}/`
+      );
+      result = result.data.dealers;
+      if (result.length > 0) {
+        result.map(dealer => {
+          const ifExist = data.find(({ id }) => id === dealer.id);
+          if (!ifExist) {
+            data = data.push(dealer);
+          }
+        });
       }
     }
     await fs.outputJson(
@@ -24,4 +30,4 @@ const fetchDealersByZip = async function() {
   }
 };
 
-fetchDealersByZip();
+fetchDealers();
