@@ -64,7 +64,7 @@ const fetchDealersByZipProx = function() {
   });
 };
 
-// fetchDealersByState();
+fetchDealersByState();
 // fetchDealersByCity();
-fetchDealersByZip();
+// fetchDealersByZip();
 // fetchDealersByZipProx();
