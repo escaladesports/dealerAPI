@@ -36,10 +36,10 @@ const fetchDealersByCity = function() {
 const fetchDealersByZip = function() {
   states.map(({ abbr }) => {
     zipcodes.lookupByState(abbr).map(async ({ zip }) => {
-      const result = await axios.get(
-        `https://apis.escaladesports.com/v1/dealers/territory/goalrilla/zip/${zip}/exact`
-      );
-      console.log(result.data.list.length);
+      // const result = await axios.get(
+      //   `https://apis.escaladesports.com/v1/dealers/territory/goalrilla/zip/${zip}/exact`
+      // );
+      console.log(zip);
       // await fs.outputJson(
       //   path.resolve(__dirname, `../dist/zip/${zip}.json`),
       //   result.data.list
