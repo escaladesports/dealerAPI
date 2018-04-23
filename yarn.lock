@@ -6415,6 +6415,10 @@ unique-slug@^2.0.0:
   dependencies:
     imurmurhash "^0.1.4"
 
+united-states@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/united-states/-/united-states-2.0.0.tgz#e946c2187ce596316ae552ee19564b4a35753a87"
+
 units-css@^0.4.0:
   version "0.4.0"
   resolved "https://registry.yarnpkg.com/units-css/-/units-css-0.4.0.tgz#d6228653a51983d7c16ff28f8b9dc3b1ffed3a07"
