@@ -8,6 +8,7 @@ import brands from '../config/brands';
 
 const fetchDealers = async function() {
   let promises = [];
+  let data = [];
   for (let brand of brands) {
     for (let { abbr } of states) {
       promises.push(
@@ -18,25 +19,20 @@ const fetchDealers = async function() {
     }
     const results = await Promise.all(promises);
     results.forEach(({ data: { dealers } }) => {
-      dealers.forEach(dealer => {
-        console.log(dealer.id);
-      });
+      if (dealers.length > 0) {
+        dealers.forEach(dealer => {
+          const ifExist = data.find(({ id }) => id === dealer.id);
+          if (!ifExist) {
+            data.push(dealer);
+          }
+        });
+      }
     });
-    // await fs.outputJson(
-    //   path.resolve(__dirname, `../dist/JSON/${brand}.json`),
-    //   data
-    // );
+    await fs.outputJson(
+      path.resolve(__dirname, `../dist/JSON/${brand}.json`),
+      data
+    );
   }
 };
-
-// result = result.data.dealers;
-//       if (result.length > 0) {
-//         result.forEach(dealer => {
-//           const ifExist = data.filter(({ id }) => id === dealer.id);
-//           if (ifExist.length === 0) {
-//             data.push(dealer);
-//           }
-//         });
-//       }
 
 fetchDealers();
