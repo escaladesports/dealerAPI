@@ -1,8 +1,12 @@
 import axios from 'axios';
+import goalrilla from '../dist/JSON/goalrilla.json';
 
-axios
-  .get(
-    'https://apis.escaladesports.com/v1/dealers/territory/goalrilla/state/ar'
-  )
-  .then(res => console.log(res.data.dealers))
-  .catch(err => console.log(err));
+goalrilla.map(dealer => {
+  console.log(
+    'NAME --> |',
+    dealer.name,
+    '| ADDRESS --> |',
+    dealer.address,
+    '|'
+  );
+});
