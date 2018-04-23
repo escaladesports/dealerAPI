@@ -1,6 +1,7 @@
 import fs from 'fs-extra';
 import path from 'path';
 import axios from 'axios';
+import fetch from 'fetch-retry';
 import zipcodes from 'zipcodes';
 import states from 'united-states';
 import cities from './cities.json';
@@ -47,18 +48,19 @@ const fetchDealersByZip = function() {
   });
 };
 
-const fetchDealersByZipProx = async function() {
+const fetchDealersByZipProx = function() {
   const prox = [30, 50, 100];
   states.map(({ abbr }) => {
     zipcodes.lookupByState(abbr).map(({ zip }) => {
-      prox.map(p => {
-        const result = await axios.get(
+      prox.map(async p => {
+        const result = await fetch(
           `https://apis.escaladesports.com/v1/dealers/territory/goalrilla/zip/${zip}/${p}`
         );
-        await fs.outputJson(
-          path.resolve(__dirname, `../dist/zip/${zip}/${p}.json`),
-          result.data.dealers
-        );
+        console.log(result);
+        // await fs.outputJson(
+        //   path.resolve(__dirname, `../dist/zip/${zip}/${p}.json`),
+        //   result.data.dealers
+        // );
       });
     });
   });
