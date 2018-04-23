@@ -16,9 +16,9 @@ const fetchDealers = async function() {
       result = result.data.dealers;
       if (result.length > 0) {
         result.map(dealer => {
-          const ifExist = data.find(({ id }) => id === dealer.id);
-          if (!ifExist) {
-            data = data.push(dealer);
+          const ifExist = data.filter(({ id }) => id === dealer.id);
+          if (ifExist.length === 0) {
+            data.push(dealer);
           }
         });
       }
