@@ -4,69 +4,24 @@ import axios from 'axios';
 import fetch from 'fetch-retry';
 import zipcodes from 'zipcodes';
 import states from 'united-states';
-import cities from './cities.json';
+import brands from '../config/brands';
 
-const fetchDealersByState = function() {
-  states.map(async state => {
-    const result = await axios.get(
-      `https://apis.escaladesports.com/v1/dealers/territory/goalrilla/state/${
-        state.abbr
-      }`
-    );
-    await fs.outputJson(
-      path.resolve(__dirname, `../dist/state/${state.abbr}.json`),
-      result.data.dealers
-    );
-  });
-};
-
-const fetchDealersByCity = function() {
-  states.map(state => {
-    cities[state.name].map(async city => {
-      const result = await axios.get(
-        `https://apis.escaladesports.com/v1/dealers/territory/goalrilla/city/${city}`
-      );
-      await fs.outputJson(
-        path.resolve(__dirname, `../dist/city/${city}.json`),
-        result.data.dealers
-      );
-    });
-  });
-};
-
-const fetchDealersByZip = function() {
-  states.map(({ abbr }) => {
-    zipcodes.lookupByState(abbr).map(async ({ zip }) => {
-      const result = await axios.get(
-        `https://apis.escaladesports.com/v1/dealers/territory/goalrilla/zip/${zip}/exact`
-      );
-      await fs.outputJson(
-        path.resolve(__dirname, `../dist/zip/${zip}.json`),
-        result.data.list
-      );
-    });
-  });
-};
-
-const fetchDealersByZipProx = function() {
-  const prox = [30, 50, 100];
-  states.map(({ abbr }) => {
-    zipcodes.lookupByState(abbr).map(({ zip }) => {
-      prox.map(async p => {
-        const result = await fetch(
-          `https://apis.escaladesports.com/v1/dealers/territory/goalrilla/zip/${zip}/${p}`
+const fetchDealersByZip = async function() {
+  let data = [];
+  for (let brand of brands) {
+    for (let { abbr } of states) {
+      for (let { zip } of zipcodes.lookupByState(abbr)) {
+        let result = await axios.get(
+          `https://apis.escaladesports.com/v1/dealers/territory/${brand}/zip/${zip}/exact`
         );
-        console.log(result);
-        // await fs.outputJson(
-        //   path.resolve(__dirname, `../dist/zip/${zip}/${p}.json`),
-        //   result.data.dealers
-        // );
-      });
-    });
-  });
+        data.concat(result.data.list);
+      }
+    }
+    await fs.outputJson(
+      path.resolve(__dirname, `../dist/JSON/${brand}.json`),
+      data
+    );
+  }
 };
 
-// fetchDealersByState();
-// fetchDealersByCity();
-// fetchDealersByZip();
-fetchDealersByZipProx();
+fetchDealersByZip();
