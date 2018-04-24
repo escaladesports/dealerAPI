@@ -14,7 +14,8 @@
     "analyze": "esca-scripts analyze --input './src/inject.js' --browser",
     "build": "run-p build:node build:options",
     "build:node": "babel-node ./src/index.js",
-    "build:options": "esca-scripts build --input options --output dist",
+    "build:options":
+      "esca-scripts build --input options --output dist --babel --multiple",
     "build:main":
       "esca-scripts build --input src --output dist --babel --multiple",
     "build:browser":
