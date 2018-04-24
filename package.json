@@ -12,7 +12,7 @@
   "license": "MIT",
   "scripts": {
     "analyze": "esca-scripts analyze --input './src/inject.js' --browser",
-    "build": "run-p build:node && cp -av ./options/* /dist/",
+    "build": "run-p build:node && cp -av ./options/* ./dist/",
     "build:node": "babel-node ./src/index.js",
     "build:main":
       "esca-scripts build --input src --output dist --babel --multiple",
