@@ -6,21 +6,10 @@ import zipcodes from 'zipcodes';
 import states from 'united-states';
 import brands from '../config/brands';
 
-
-const res = await axios.get(
-  `https://apistest.escaladesports.com/v1/dealers/territory/goalrilla/state/ar`
-);
-console.log('HQ ID --> ', res.data.hq.id);
-res.data.dealers.map(dealer => {
-  if (dealer.id === res.data.hq.id) {
-    console.log(dealer.id);
-  }
-});
-
 const fetchDealers = async function() {
   let promises = [];
   let data = [];
-  
+
   for (let brand of brands) {
     for (let { abbr } of states) {
       promises.push(
@@ -33,14 +22,14 @@ const fetchDealers = async function() {
     results.forEach(({ data: { dealers, hq } }) => {
       if (dealers.length > 0) {
         dealers.forEach(dealer => {
-          if(hq.id === dealer.id) {
+          if (hq.id === dealer.id) {
             dealer.brand = hq.brand;
           } else {
             dealer.brand = {
               [brand]: {
-                "error": 0
+                error: 0
               }
-            }
+            };
           }
           const ifExist = data.find(({ id }) => id === dealer.id);
           if (!ifExist) {
