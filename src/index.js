@@ -11,26 +11,20 @@ const fetchDealers = async function() {
   let data = [];
 
   for (let brand of brands) {
-    for (let { abbr } of states) {
-      promises.push(
-        axios.get(
-          `https://apistest.escaladesports.com/v1/dealers/territory/${brand}/state/${abbr}`
-        )
-      );
-    }
+    promises.push(
+      axios.get(
+        `https://apistest.escaladesports.com/v1/dealers/list/${brand.name}/all`,
+        {
+          headers: {
+            Authorization: `API-KEY ${brand.key}`
+          }
+        }
+      )
+    );
     const results = await Promise.all(promises);
     results.forEach(({ data: { dealers, hq } }) => {
       if (dealers.length > 0) {
         dealers.forEach(dealer => {
-          if (hq.id === dealer.id) {
-            dealer.brand = hq.brand;
-          } else {
-            dealer.brand = {
-              [brand]: {
-                error: 0
-              }
-            };
-          }
           const ifExist = data.find(({ id }) => id === dealer.id);
           if (!ifExist) {
             data.push(dealer);
