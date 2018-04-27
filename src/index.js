@@ -19,9 +19,9 @@ const fetchDealers = async function() {
       }
     );
 
-    for (let i in data) {
-      console.log(data[i]);
-      data.push(data[i]);
+    for (let i in results) {
+      console.log(results[i]);
+      data.push(results[i]);
     }
 
     await fs.outputJson(
