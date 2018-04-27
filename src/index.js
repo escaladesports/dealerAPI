@@ -22,21 +22,22 @@ const fetchDealers = async function() {
       )
     );
     const results = await Promise.all(promises);
-    results.forEach(({ data: { dealers, hq } }) => {
-      if (dealers.length > 0) {
-        dealers.forEach(dealer => {
-          const ifExist = data.find(({ id }) => id === dealer.id);
-          if (!ifExist) {
-            data.push(dealer);
-          }
-        });
-      }
+    console.log(results[0]);
+
+    results.forEach(({ data }, i) => {
+      console.log(i);
+      // dealers.forEach(dealer => {
+      //   const ifExist = data.find(({ id }) => id === dealer.id);
+      //   if (!ifExist) {
+      //     data.push(dealer);
+      //   }
+      // });
     });
 
-    await fs.outputJson(
-      path.resolve(__dirname, `../dist/JSON/${brand}.json`),
-      data
-    );
+    // await fs.outputJson(
+    //   path.resolve(__dirname, `../dist/JSON/${brand}.json`),
+    //   data
+    // );
   }
 };
 
