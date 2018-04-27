@@ -19,19 +19,17 @@ const fetchDealers = async function() {
       }
     );
 
-    console.log(results.data);
+    for (let i in data) {
+      const ifExist = data.find(({ id }) => id === data[i].id);
+      if (!ifExist) {
+        data.push(data[i]);
+      }
+    }
 
-    //   for(let i in data){
-    //     const ifExist = data.find(({ id }) => id === data[i].id);
-    //     if (!ifExist){
-    //       data.push(data[i])
-    //     }
-    //   }
-
-    // await fs.outputJson(
-    //   path.resolve(__dirname, `../dist/JSON/${brand}.json`),
-    //   data
-    // );
+    await fs.outputJson(
+      path.resolve(__dirname, `../dist/JSON/${brand}.json`),
+      data
+    );
   }
 };
 
