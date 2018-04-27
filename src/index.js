@@ -20,8 +20,10 @@ const fetchDealers = async function() {
     );
 
     for (let i in results.data) {
-      console.log(results.data[i]);
-      data.push(results.data[i]);
+      const ifExist = data.find(({ id }) => id === results.data[i].id);
+      if (!ifExist) {
+        data.push(results.data[i]);
+      }
     }
 
     await fs.outputJson(
