@@ -27,7 +27,7 @@ const fetchDealers = async function() {
     }
 
     await fs.outputJson(
-      path.resolve(__dirname, `../dist/JSON/${brand}.json`),
+      path.resolve(__dirname, `../dist/JSON/${brand.name}.json`),
       data
     );
   }
