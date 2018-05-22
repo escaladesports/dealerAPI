@@ -11,7 +11,7 @@ const fetchDealers = async function() {
 
   for (let brand of brands) {
     const results = await axios.get(
-      `https://apistest.escaladesports.com/v1/dealers/list/${brand.name}/all`,
+      `https://apis.escaladesports.com/v1/dealers/list/${brand.name}/all`,
       {
         headers: {
           Authorization: `API-KEY ${brand.key}`

@@ -1,26 +1,28 @@
+require('envdotjs').load();
+
 module.exports = [
   {
     name: 'goalrilla',
-    key: 'WXpSaFptSmtPRE0yWmpKa09ESTJaVFpqTWpaa04yWTJaVFEwTm1ZNU9USQ'
+    key: process.env.GOALRILLA_KEY
   },
   {
     name: 'bear',
-    key: 'TnpFeFl6Wm1PV0l6WkRJeFlUUTBNVEF6WmpNd05EaGhaR0kxTTJGbVltRQ'
+    key: process.env.BEAR_KEY
   },
   {
     name: 'cajun',
-    key: 'WmpreVlXUTVNak0xTmpGbU16STJOR0ppTTJJMU5XWXpNbUkzT0RJMU5HUQ'
+    key: process.env.CAJUN_KEY
   },
   {
     name: 'goalsetter',
-    key: 'WldNNFlqQmhORFk0TlRaaU1ETTRNRFptWWpkaE5tSmxZamswWWprMllXSQ'
+    key: process.env.GOALSETTER_KEY
   },
   {
     name: 'trophyridge',
-    key: 'TnpnNE1EQXhNVGxoWTJSbFlXTm1ZbVJoWm1RNE16Wm1ORGt3TlRobU4ySQ'
+    key: process.env.TROPHYRIDGE_KEY
   },
   {
     name: 'woodplay',
-    key: 'WVdNMFpUUXlPVGN3Wm1Rek5EbGpPVEk1TXpReE1tVmxZakExWTJObU4yTQ'
+    key: process.env.WOODPLAY_KEY
   }
 ];
