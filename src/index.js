@@ -1,37 +1,31 @@
-import fs from 'fs-extra'
-import path from 'path'
-import axios from 'axios'
-import brands from '../config/brands'
+import fs from "fs-extra";
+import path from "path";
+import axios from "axios";
+
+import brands from "../config/brands";
+import { getRegularDealers, getPlatinumDealers } from "./request/get";
 
 const fetchDealers = async function() {
- let data = []
+  let data = [];
 
- for (let brand of brands) {
-  const url = `https://apis.escaladesports.com/v1/dealers/list/${
-   brand.name
-  }/all`
-  console.log(url)
-  const results = await axios.get(url, {
-   headers: {
-    Authorization: `API-KEY ${brand.key}`
-   }
-  })
-  console.log(Object.keys(results.data).length)
-  for (let i in results.data) {
-   const ifExist = data.find(({ id }) => id === results.data[i].id)
-   if (typeof results.data[i] === 'object') {
-    if (!ifExist) {
-     data.push(results.data[i])
-    }
-   }
+  for (let brand of brands) {
+    const regDealers = await getRegularDealers(brand[`name`], brand[`key`]);
+    const platDealers = await getPlatinumDealers(brand[`name`], brand[`key`]);
+
+    console.log(`Regular Dealers`);
+    console.log(`------`);
+    console.log(regDealers.length);
+    console.log(`------`);
+    console.log(`Platinum Dealers`);
+    console.log(`------`);
+    console.log(platDealers.length);
+    console.log(`------`);
+    // await fs.outputJson(
+    //   path.resolve(__dirname, `../dist/JSON/${brand.name}.json`),
+    //   data
+    // );
+    console.log(`Built page for ${brand.name}`);
   }
+};
 
-  await fs.outputJson(
-   path.resolve(__dirname, `../dist/JSON/${brand.name}.json`),
-   data
-  )
-  console.log(`Built page for ${brand.name}`)
- }
-}
-
-fetchDealers()
+fetchDealers();
