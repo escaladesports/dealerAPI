@@ -9,7 +9,7 @@ const request = {
     headers: {
      Authorization: `API-KEY ${brandKey}`
     }
-   }).data
+   }).then(res => res.data)
 
    return res
   }
