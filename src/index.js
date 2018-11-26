@@ -26,19 +26,8 @@ const fetchDealers = async function() {
    console.log(`Plat Dealers`, platDealers[`error`])
    process.exit(1)
   }
-
-  for (let dealer in platDealers) {
-   console.log(dealer)
-  }
-
-  console.log(`------`)
-  console.log(`Regular Dealers`)
-  console.log(Object.keys(regDealers))
-  console.log(`------`)
-  console.log(`------`)
-  console.log(`Platinum Dealers`)
-  console.log(Object.keys(platDealers))
-  console.log(`------`)
+  console.log(Object.values(regDealers))
+  console.log(Object.values(platDealers))
   // await fs.outputJson(
   //   path.resolve(__dirname, `../dist/JSON/${brand.name}.json`),
   //   data
