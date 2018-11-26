@@ -12,7 +12,7 @@ const fetchDealers = () => {
   const keys = Object.keys(dealers)
   keys.forEach(key => {
    if (isNaN(key)) {
-    console.log(dealers[key])
+    console.log(key, dealers[key])
    }
   })
 
