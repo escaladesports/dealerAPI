@@ -10,7 +10,7 @@ const fetchDealers = async function() {
  brands.forEach(async brand => {
   const regDealers = await getRegularDealers(brand[`name`], brand[`key`])
   const platDealers = await getPlatinumDealers(brand[`name`], brand[`key`])
-
+  console.log(regDealers)
   delete regDealers[`exectime`]
   delete platDealers[`exectime`]
 
