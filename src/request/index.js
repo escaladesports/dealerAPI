@@ -30,7 +30,7 @@ const request = {
     let paginatedRes = await api.getDealers(brand, brandKey, page)
     Object.keys(paginatedRes).forEach(key => {
      if (isNaN(key)) {
-      delete paginationRes[key]
+      delete paginatedRes[key]
      }
     })
     const paginatedDealers = Object.values(paginatedRes)
