@@ -26,8 +26,7 @@ const fetchDealers = async function() {
    console.log(`Plat Dealers`, platDealers[`error`])
    process.exit(1)
   }
-  console.log(Object.values(regDealers))
-  console.log(Object.values(platDealers))
+
   const updatedPlatDealers = Object.values(platDealers)
   console.log(
    updatedPlatDealers.map(dealer => {
