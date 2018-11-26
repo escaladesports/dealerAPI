@@ -13,20 +13,21 @@ const fetchDealers = async function() {
 
   delete regDealers[`exectime`]
   delete platDealers[`exectime`]
-
-  if (
-   (regDealers[`error`] === 0 || !regDealers[`error`]) &&
-   (platDealers[`error`] === 0 || !platDealers[`error`])
-  ) {
-   delete regDealers[`error`]
-   delete platDealers[`error`]
-  } else {
-   console.log(`Reg Dealers`, regDealers[`error`])
-   console.log(regDealers)
-   console.log(`Plat Dealers`, platDealers[`error`])
-   console.log(platDealers)
-   process.exit(1)
-  }
+  delete regDealers[`error`]
+  delete platDealers[`error`]
+  // if (
+  //  (regDealers[`error`] === 0 || !regDealers[`error`]) &&
+  //  (platDealers[`error`] === 0 || !platDealers[`error`])
+  // ) {
+  //  delete regDealers[`error`]
+  //  delete platDealers[`error`]
+  // } else {
+  //  console.log(`Reg Dealers`, regDealers[`error`])
+  //  console.log(regDealers)
+  //  console.log(`Plat Dealers`, platDealers[`error`])
+  //  console.log(platDealers)
+  //  process.exit(1)
+  // }
 
   const updatedPlatDealers = Object.values(platDealers).map(dealer => ({
    ...dealer,
