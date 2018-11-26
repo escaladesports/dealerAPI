@@ -11,14 +11,13 @@ const fetchDealers = async function() {
  for (let brand of brands) {
   const regDealers = await getRegularDealers(brand[`name`], brand[`key`])
   const platDealers = await getPlatinumDealers(brand[`name`], brand[`key`])
-
   console.log(`------`)
   console.log(`Regular Dealers`)
-  console.log(Object.keys(regDealers).length)
+  console.log(Object.keys(regDealers))
   console.log(`------`)
   console.log(`------`)
   console.log(`Platinum Dealers`)
-  console.log(Object.keys(platDealers).length)
+  console.log(Object.keys(platDealers))
   console.log(`------`)
   // await fs.outputJson(
   //   path.resolve(__dirname, `../dist/JSON/${brand.name}.json`),
