@@ -22,7 +22,9 @@ const fetchDealers = async function() {
    delete platDealers[`error`]
   } else {
    console.log(`Reg Dealers`, regDealers[`error`])
+   console.log(regDealers)
    console.log(`Plat Dealers`, platDealers[`error`])
+   console.log(platDealers)
    process.exit(1)
   }
 
