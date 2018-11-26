@@ -14,11 +14,11 @@ const fetchDealers = async function() {
 
     console.log(`Regular Dealers`);
     console.log(`------`);
-    console.log(regDealers.length);
+    console.log(regDealers);
     console.log(`------`);
     console.log(`Platinum Dealers`);
     console.log(`------`);
-    console.log(platDealers.length);
+    console.log(platDealers);
     console.log(`------`);
     // await fs.outputJson(
     //   path.resolve(__dirname, `../dist/JSON/${brand.name}.json`),
