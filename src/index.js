@@ -18,7 +18,7 @@ const fetchDealers = async function() {
   console.log(`------`)
   console.log(`Platinum Dealers`)
   console.log(Object.keys(platDealers))
-  console.log(platDealers[`error`])
+  console.log(`Errors`, platDealers[`error`])
   console.log(`------`)
   // await fs.outputJson(
   //   path.resolve(__dirname, `../dist/JSON/${brand.name}.json`),
