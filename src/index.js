@@ -5,14 +5,11 @@ import brands from '../config/brands'
 import apiRequest from './request'
 
 const fetchDealers = () => {
- let data = []
-
  brands.forEach(async brand => {
   const dealers = await apiRequest.get.dealers(brand[`name`], brand[`key`])
-
   await fs.outputJson(
    path.resolve(__dirname, `../dist/JSON/${brand[`name`]}.json`),
-   data
+   dealers
   )
   console.log(`Built page for ${brand[`name`]}`)
  })
