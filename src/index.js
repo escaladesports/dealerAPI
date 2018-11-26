@@ -31,6 +31,7 @@ const fetchDealers = async function() {
   const updatedPlatDealers = Object.values(platDealers)
   console.log(
    updatedPlatDealers.map(dealer => {
+    console.log(`hello`)
     return {
      plat: true
     }
