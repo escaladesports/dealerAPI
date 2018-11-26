@@ -27,18 +27,13 @@ const fetchDealers = async function() {
    process.exit(1)
   }
 
-  const updatedPlatDealers = Object.values(platDealers)
-  console.log(
-   updatedPlatDealers.map(dealer => {
-    console.log(`hello`)
-    return {
-     plat: true
-    }
-   })
-  )
+  const updatedPlatDealers = Object.values(platDealers).map(dealer => ({
+   ...dealer,
+   platinum: true
+  }))
   const updatedRegDealers = Object.values(regDealers)
   data = [...updatedPlatDealers, ...updatedRegDealers]
-  // console.log(data)
+  console.log(data)
   // await fs.outputJson(
   //   path.resolve(__dirname, `../dist/JSON/${brand.name}.json`),
   //   data
