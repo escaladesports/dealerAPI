@@ -2,36 +2,16 @@ import fs from 'fs-extra'
 import path from 'path'
 
 import brands from '../config/brands'
-import { getRegularDealers, getPlatinumDealers } from './request/get'
+import apiRequest from './request'
 
-const fetchDealers = async function() {
+const fetchDealers = () => {
  let data = []
 
  brands.forEach(async brand => {
-  const regDealers = await getRegularDealers(brand[`name`], brand[`key`])
-  const platDealers = await getPlatinumDealers(brand[`name`], brand[`key`])
-  console.log(regDealers)
-  delete regDealers[`exectime`]
-  delete platDealers[`exectime`]
+  const dealers = await apiRequest.get[`dealers`]
 
-  if (regDealers[`error`] !== 0 || regDealers[`error`]) {
-   console.log(`Reg Dealers`, regDealers)
-   data = [...data, { errorReg: regDealers[`error`] }]
-  }
-  if (platDealers[`error`] !== 0 || platDealers[`error`]) {
-   console.log(`Plat Dealers`, platDealers)
-   data = [...data, { errorPlat: platDealers[`error`] }]
-  }
+  console.log(dealers)
 
-  delete regDealers[`error`]
-  delete platDealers[`error`]
-
-  const updatedPlatDealers = Object.values(platDealers).map(dealer => ({
-   ...dealer,
-   platinum: true
-  }))
-  const updatedRegDealers = Object.values(regDealers)
-  data = [...data, ...updatedPlatDealers, ...updatedRegDealers]
   await fs.outputJson(
    path.resolve(__dirname, `../dist/JSON/${brand[`name`]}.json`),
    data
