@@ -36,7 +36,6 @@ const request = {
     const paginatedDealers = Object.values(paginatedRes)
     dealers = [...dealers, ...paginatedDealers]
    } while (page <= pages)
-   console.log(dealers)
    return dealers
   }
  },
