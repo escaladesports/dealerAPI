@@ -8,7 +8,7 @@ import { getRegularDealers, getPlatinumDealers } from './request/get'
 const fetchDealers = async function() {
  let data = []
 
- for (let brand of brands) {
+ brands.forEach(brand => {
   const regDealers = await getRegularDealers(brand[`name`], brand[`key`])
   const platDealers = await getPlatinumDealers(brand[`name`], brand[`key`])
 
@@ -40,7 +40,7 @@ const fetchDealers = async function() {
   //   data
   // );
   console.log(`Built page for ${brand.name}`)
- }
+ })
 }
 
 fetchDealers()
