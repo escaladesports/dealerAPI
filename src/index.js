@@ -11,6 +11,22 @@ const fetchDealers = async function() {
  for (let brand of brands) {
   const regDealers = await getRegularDealers(brand[`name`], brand[`key`])
   const platDealers = await getPlatinumDealers(brand[`name`], brand[`key`])
+
+  delete regDealers[`exectime`]
+  delete platDealers[`exectime`]
+
+  if (
+   (regDealers[`error`] === 0 || !regDealers[`error`]) &&
+   (platDealers[`error`] === 0 || !platDealers[`error`])
+  ) {
+   delete regDealers[`error`]
+   delete platDealers[`error`]
+  } else {
+   console.log(`Reg Dealers`, regDealers[`error`])
+   console.log(`Plat Dealers`, platDealers[`error`])
+   process.exit(1)
+  }
+
   console.log(`------`)
   console.log(`Regular Dealers`)
   console.log(Object.keys(regDealers))
@@ -18,7 +34,6 @@ const fetchDealers = async function() {
   console.log(`------`)
   console.log(`Platinum Dealers`)
   console.log(Object.keys(platDealers))
-  console.log(`Errors`, platDealers[`error`])
   console.log(`------`)
   // await fs.outputJson(
   //   path.resolve(__dirname, `../dist/JSON/${brand.name}.json`),
