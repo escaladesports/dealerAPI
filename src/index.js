@@ -8,7 +8,7 @@ import { getRegularDealers, getPlatinumDealers } from './request/get'
 const fetchDealers = async function() {
  let data = []
 
- brands.forEach(brand => {
+ brands.forEach(async brand => {
   const regDealers = await getRegularDealers(brand[`name`], brand[`key`])
   const platDealers = await getPlatinumDealers(brand[`name`], brand[`key`])
 
