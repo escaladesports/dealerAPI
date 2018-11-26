@@ -34,7 +34,6 @@ const fetchDealers = async function() {
   }))
   console.log(
    Object.values(platDealers).map(dealer => ({
-    ...dealer,
     platinum: true
    }))
   )
