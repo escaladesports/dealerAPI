@@ -9,8 +9,12 @@ const fetchDealers = () => {
 
  brands.forEach(async brand => {
   const dealers = await apiRequest.get.dealers(brand[`name`], brand[`key`])
-
-  console.log(dealers)
+  const keys = Object.keys(dealers)
+  keys.forEach(key => {
+   if (isNaN(key)) {
+    console.log(key)
+   }
+  })
 
   await fs.outputJson(
    path.resolve(__dirname, `../dist/JSON/${brand[`name`]}.json`),
