@@ -27,6 +27,10 @@ const fetchDealers = async function() {
    process.exit(1)
   }
 
+  for (let dealer in platDealers) {
+   console.log(dealer)
+  }
+
   console.log(`------`)
   console.log(`Regular Dealers`)
   console.log(Object.keys(regDealers))
