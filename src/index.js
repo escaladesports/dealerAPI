@@ -13,28 +13,28 @@ const fetchDealers = async function() {
 
   delete regDealers[`exectime`]
   delete platDealers[`exectime`]
-  delete regDealers[`error`]
-  delete platDealers[`error`]
-  // if (
-  //  (regDealers[`error`] === 0 || !regDealers[`error`]) &&
-  //  (platDealers[`error`] === 0 || !platDealers[`error`])
-  // ) {
-  //  delete regDealers[`error`]
-  //  delete platDealers[`error`]
-  // } else {
-  //  console.log(`Reg Dealers`, regDealers[`error`])
-  //  console.log(regDealers)
-  //  console.log(`Plat Dealers`, platDealers[`error`])
-  //  console.log(platDealers)
-  //  process.exit(1)
-  // }
+
+  if (
+   (regDealers[`error`] === 0 || !regDealers[`error`]) &&
+   (platDealers[`error`] === 0 || !platDealers[`error`])
+  ) {
+   delete regDealers[`error`]
+   delete platDealers[`error`]
+  } else {
+   console.log(`Reg Dealers`, regDealers)
+   console.log(`Plat Dealers`, platDealers)
+   data = [
+    { errorReg: regDealers[`error`] },
+    { errorPlat: platDealers[`error`] }
+   ]
+  }
 
   const updatedPlatDealers = Object.values(platDealers).map(dealer => ({
    ...dealer,
    platinum: true
   }))
   const updatedRegDealers = Object.values(regDealers)
-  data = [...updatedPlatDealers, ...updatedRegDealers]
+  data = [...data, ...updatedPlatDealers, ...updatedRegDealers]
   await fs.outputJson(
    path.resolve(__dirname, `../dist/JSON/${brand[`name`]}.json`),
    data
