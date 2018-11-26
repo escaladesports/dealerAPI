@@ -32,9 +32,10 @@ const fetchDealers = async function() {
    ...dealer,
    platinum: true
   }))
+  console.log(updatedPlatDealers)
   const updatedRegDealers = Object.values(regDealers)
   data = [...updatedPlatDealers, ...updatedRegDealers]
-  console.log(data)
+  // console.log(data)
   // await fs.outputJson(
   //   path.resolve(__dirname, `../dist/JSON/${brand.name}.json`),
   //   data
