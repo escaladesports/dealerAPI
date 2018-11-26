@@ -2,8 +2,8 @@ require('envdotjs').load()
 
 module.exports = [
  {
-   name: 'goalrilla',
-   key: process.env.GOALRILLA_KEY
+  name: 'goalrilla',
+  key: process.env.GOALRILLA_KEY
  },
  {
   name: 'bear',
@@ -16,13 +16,13 @@ module.exports = [
  {
   name: 'goalsetter',
   key: process.env.GOALSETTER_KEY
- }
+ },
  {
   name: 'trophyridge',
   key: process.env.TROPHYRIDGE_KEY
  },
-  {
-   name: 'woodplay',
-   key: process.env.WOODPLAY_KEY
-  }
+ {
+  name: 'woodplay',
+  key: process.env.WOODPLAY_KEY
+ }
 ]
