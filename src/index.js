@@ -1,6 +1,5 @@
 import fs from 'fs-extra'
 import path from 'path'
-import axios from 'axios'
 
 import brands from '../config/brands'
 import { getRegularDealers, getPlatinumDealers } from './request/get'
@@ -33,12 +32,11 @@ const fetchDealers = async function() {
   }))
   const updatedRegDealers = Object.values(regDealers)
   data = [...updatedPlatDealers, ...updatedRegDealers]
-  console.log(data)
-  // await fs.outputJson(
-  //   path.resolve(__dirname, `../dist/JSON/${brand.name}.json`),
-  //   data
-  // );
-  console.log(`Built page for ${brand.name}`)
+  await fs.outputJson(
+   path.resolve(__dirname, `../dist/JSON/${brand[`name`]}.json`),
+   data
+  )
+  console.log(`Built page for ${brand[`name`]}`)
  })
 }
 
