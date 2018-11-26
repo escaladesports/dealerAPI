@@ -23,18 +23,20 @@ const request = {
      delete res[key]
     }
    })
-   dealers = [...dealers, ...res]
+   const updatedDealers = Object.values(res)
+   dealers = [...dealers, ...updatedDealers]
    do {
     page++
-    let paginationRes = await api.getDealers(brand, brandKey, page)
-    Object.keys(paginationRes).forEach(key => {
+    let paginatedRes = await api.getDealers(brand, brandKey, page)
+    Object.keys(paginatedRes).forEach(key => {
      if (isNaN(key)) {
       delete paginationRes[key]
      }
     })
-    dealers = [...dealers, ...paginationRes]
+    const paginatedDealers = Object.values(paginatedRes)
+    dealers = [...dealers, ...paginatedDealers]
    } while (page <= pages)
-
+   console.log(dealers)
    return dealers
   }
  },
