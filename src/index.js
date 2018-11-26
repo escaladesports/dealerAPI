@@ -28,12 +28,9 @@ const fetchDealers = async function() {
   }
   console.log(Object.values(regDealers))
   console.log(Object.values(platDealers))
-  const updatedPlatDealers = Object.values(platDealers).map(dealer => ({
-   ...dealer,
-   platinum: true
-  }))
+  const updatedPlatDealers = Object.values(platDealers)
   console.log(
-   Object.values(platDealers).map(dealer => ({
+   updatedPlatDealers.map(dealer => ({
     platinum: true
    }))
   )
