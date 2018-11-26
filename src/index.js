@@ -14,11 +14,11 @@ const fetchDealers = async function() {
 
   console.log(`------`)
   console.log(`Regular Dealers`)
-  console.log(regDealers)
+  console.log(Object.keys(regDealers).length)
   console.log(`------`)
   console.log(`------`)
   console.log(`Platinum Dealers`)
-  console.log(Object.keys(platDealers))
+  console.log(Object.keys(platDealers).length)
   console.log(`------`)
   // await fs.outputJson(
   //   path.resolve(__dirname, `../dist/JSON/${brand.name}.json`),
