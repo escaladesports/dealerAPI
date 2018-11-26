@@ -11,7 +11,7 @@ const fetchDealers = () => {
    path.resolve(__dirname, `../dist/JSON/${brand[`name`]}.json`),
    dealers
   )
-  console.log(`Built page for ${brand[`name`]}`)
+  console.log(`${dealers.length} dealers for ${brand[`name`]}`)
  })
 }
 
