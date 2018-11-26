@@ -8,9 +8,9 @@ const fetchDealers = () => {
  let data = []
 
  brands.forEach(async brand => {
-  const dealers = await apiRequest.get[`dealers`]
+  const dealers = await apiRequest.get.dealers(brand[`name`], brand[`key`])
 
-  console.log(dealers)
+  console.log(Object.keys(dealers))
 
   await fs.outputJson(
    path.resolve(__dirname, `../dist/JSON/${brand[`name`]}.json`),
