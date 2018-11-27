@@ -18,11 +18,11 @@ const request = {
    let dealers = []
    let res = await api.getDealers(brand, brandKey, page)
    const { pages, errors, error } = res
-   if (errors || error) {
+   if ((errors || error) && error !== 1) {
     console.log(
-     `Error for ${brand}:  ${errors ? JSON.stringify(errors) : ``}, ${
-      error ? JSON.stringify(error) : ``
-     }`
+     `Error for ${brand}:  ERRORS: ${
+      errors ? JSON.stringify(errors) : ``
+     }, ERROR: ${error ? JSON.stringify(error) : ``}`
     )
    }
    Object.keys(res).forEach(key => {
@@ -36,11 +36,11 @@ const request = {
     page++
     let paginatedRes = await api.getDealers(brand, brandKey, page)
     const { errors, error } = paginatedRes
-    if (errors || error) {
+    if ((errors || error) && error !== 1) {
      console.log(
-      `Error for ${brand}:  ${errors ? JSON.stringify(errors) : ``}, ${
-       error ? JSON.stringify(error) : ``
-      }`
+      `Error for ${brand}:  ERRORS: ${
+       errors ? JSON.stringify(errors) : ``
+      }, ERROR: ${error ? JSON.stringify(error) : ``}`
      )
     }
     Object.keys(paginatedRes).forEach(key => {
