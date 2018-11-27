@@ -18,6 +18,7 @@ const request = {
    let dealers = []
    let res = await api.getDealers(brand, brandKey, page)
    const { pages } = res
+   console.log(res)
    Object.keys(res).forEach(key => {
     if (isNaN(key)) {
      delete res[key]
