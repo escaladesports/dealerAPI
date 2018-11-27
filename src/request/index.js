@@ -24,7 +24,6 @@ const request = {
       error ? JSON.stringify(error) : ``
      }`
     )
-    process.exit(1)
    }
    Object.keys(res).forEach(key => {
     if (isNaN(key)) {
@@ -43,7 +42,6 @@ const request = {
        error ? JSON.stringify(error) : ``
       }`
      )
-     process.exit(1)
     }
     Object.keys(paginatedRes).forEach(key => {
      if (isNaN(key)) {
