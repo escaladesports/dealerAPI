@@ -24,7 +24,6 @@ const request = {
    }
    Object.keys(res).forEach(key => {
     if (isNaN(key)) {
-     console.log(key)
      delete res[key]
     }
    })
