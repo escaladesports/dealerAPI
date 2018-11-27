@@ -17,7 +17,11 @@ const request = {
    let page = 0
    let dealers = []
    let res = await api.getDealers(brand, brandKey, page)
-   const { pages, errors } = res
+   const { pages, errors, error } = res
+   if (errors || error) {
+    console.log(`Error for ${brand}:  ${errors && errors}, ${error && error}`)
+    process.exit(1)
+   }
    Object.keys(res).forEach(key => {
     if (isNaN(key)) {
      console.log(key)
@@ -29,6 +33,11 @@ const request = {
    do {
     page++
     let paginatedRes = await api.getDealers(brand, brandKey, page)
+    const { errors, error } = paginatedRes
+    if (errors || error) {
+     console.log(`Error for ${brand}:  ${errors && errors}, ${error && error}`)
+     process.exit(1)
+    }
     Object.keys(paginatedRes).forEach(key => {
      if (isNaN(key)) {
       delete paginatedRes[key]
