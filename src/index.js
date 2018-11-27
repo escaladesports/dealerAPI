@@ -1,37 +1,19 @@
 import fs from 'fs-extra'
 import path from 'path'
-import axios from 'axios'
+
 import brands from '../config/brands'
+import apiRequest from './request'
 
-const fetchDealers = async function() {
- let data = []
-
- for (let brand of brands) {
-  const url = `https://apis.escaladesports.com/v1/dealers/list/${
-   brand.name
-  }/all`
-  console.log(url)
-  const results = await axios.get(url, {
-   headers: {
-    Authorization: `API-KEY ${brand.key}`
-   }
-  })
-  console.log(Object.keys(results.data).length)
-  for (let i in results.data) {
-   const ifExist = data.find(({ id }) => id === results.data[i].id)
-   if (typeof results.data[i] === 'object') {
-    if (!ifExist) {
-     data.push(results.data[i])
-    }
-   }
-  }
-
+const fetchDealers = () => {
+ brands.forEach(async brand => {
+  const dealers = await apiRequest.get.dealers(brand[`name`], brand[`key`])
+  // build json pages into dist/JSON/ folder
   await fs.outputJson(
-   path.resolve(__dirname, `../dist/JSON/${brand.name}.json`),
-   data
+   path.resolve(__dirname, `../dist/JSON/${brand[`name`]}.json`),
+   dealers
   )
-  console.log(`Built page for ${brand.name}`)
- }
+  console.log(`${dealers.length} dealers for ${brand[`name`]}`)
+ })
 }
 
 fetchDealers()
