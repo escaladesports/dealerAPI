@@ -4,7 +4,7 @@ const api = {
  getDealers: async (brand, brandKey, page) =>
   await axios({
    method: `get`,
-   url: `https://apistest.escaladesports.com/v1/dealers/list/${brand}/all/${page}`,
+   url: `https://apis.escaladesports.com/v1/dealers/list/${brand}/all/${page}`,
    headers: {
     Authorization: `API-KEY ${brandKey}`
    }
