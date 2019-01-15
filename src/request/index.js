@@ -59,4 +59,4 @@ const request = {
 	delete: {}
 }
 
-export default request
+export default { request, api }
