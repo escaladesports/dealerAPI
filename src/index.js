@@ -5,11 +5,7 @@ import brands from '../config/brands'
 import { request, api } from './request'
 
 const fetchDealers = async () => {
-	const dealers = await apiRequest.api.getDealers(
-		brands[0][`name`],
-		brands[0][`key`],
-		1
-	)
+	const dealers = await api.getDealers(brands[0][`name`], brands[0][`key`], 1)
 	console.log(dealers)
 	//  brands.forEach(async brand => {
 	//   const dealers = await apiRequest.get.dealers(brand[`name`], brand[`key`])
