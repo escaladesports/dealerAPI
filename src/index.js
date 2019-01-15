@@ -6,7 +6,10 @@ import { request, api } from './request'
 
 const fetchDealers = async () => {
 	const dealers = await api.getDealers(brands[0][`name`], brands[0][`key`], 1)
-	console.log(dealers)
+	console.log(dealers.length)
+	await fs.outputJson(__dirname, `../dist/JSON/goalrilla.json`, {
+		test: 'test'
+	})
 	//  brands.forEach(async brand => {
 	//   const dealers = await apiRequest.get.dealers(brand[`name`], brand[`key`])
 	//   await fs.outputJson(
