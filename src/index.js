@@ -2,22 +2,17 @@ import fs from 'fs-extra'
 import path from 'path'
 
 import brands from '../config/brands'
-import { request, api } from './request'
+import { request } from './request'
 
 const fetchDealers = async () => {
-	const dealers = await api.getDealers(brands[0][`name`], brands[0][`key`], 1)
-	console.log(dealers.length)
-	await fs.outputJson(__dirname, `../dist/JSON/goalrilla.json`, {
-		test: 'test'
+	brands.forEach(async brand => {
+		const dealers = await request.get.dealers(brand[`name`], brand[`key`])
+		await fs.outputJson(
+			path.resolve(__dirname, `../dist/JSON/${brand[`name`]}.json`),
+			dealers
+		)
+		console.log(`${dealers.length} dealers for ${brand[`name`]}`)
 	})
-	//  brands.forEach(async brand => {
-	//   const dealers = await apiRequest.get.dealers(brand[`name`], brand[`key`])
-	//   await fs.outputJson(
-	//    path.resolve(__dirname, `../dist/JSON/${brand[`name`]}.json`),
-	//    dealers
-	//   )
-	//   console.log(`${dealers.length} dealers for ${brand[`name`]}`)
-	//  })
 }
 
 fetchDealers()
