@@ -24,6 +24,7 @@ const request = {
 						errors ? JSON.stringify(errors) : ``
 					}, ERROR: ${error ? JSON.stringify(error) : ``}`
 				)
+				process.exit(1);
 			}
 			Object.keys(res).forEach(key => {
 				if (isNaN(key)) {

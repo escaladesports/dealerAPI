@@ -7,7 +7,12 @@ import { request } from './request'
 const fetchDealers = async () => {
 	console.log(`In Prod ENV`)
 	brands.forEach(async brand => {
-		const dealers = await request.get.dealers(brand[`name`], brand[`key`])
+		const dealers = await request.get
+			.dealers(brand[`name`], brand[`key`])
+			.catch(err => {
+				console.log(err)
+				process.exit(1)
+			})
 		await fs.outputJson(
 			path.resolve(__dirname, `../dist/JSON/${brand[`name`]}.json`),
 			dealers
