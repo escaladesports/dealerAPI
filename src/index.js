@@ -5,7 +5,7 @@ import brands from '../config/brands'
 import { request } from './request'
 
 const fetchDealers = async () => {
-	console.log(`In Prod ENV`)
+	console.log(`In ${process.env.NODE_ENV} ENV`)
 	brands.forEach(async brand => {
 		const dealers = await request.get
 			.dealers(brand[`name`], brand[`key`])

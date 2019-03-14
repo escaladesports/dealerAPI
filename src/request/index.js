@@ -4,7 +4,10 @@ const api = {
 	getDealers: async (brand, brandKey, page) =>
 		await axios({
 			method: `get`,
-			url: `https://apis.escaladesports.com/v1/dealers/list/${brand}/all/${page}`,
+			url:
+				process.env.NODE_ENV === `production`
+					? `https://apis.escaladesports.com/v1/dealers/list/${brand}/all/${page}`
+					: `https://apistest.escaladesports.com/v1/dealers/list/${brand}/all/${page}`,
 			headers: {
 				Authorization: `API-KEY ${brandKey}`
 			}
@@ -24,7 +27,7 @@ const request = {
 						errors ? JSON.stringify(errors) : ``
 					}, ERROR: ${error ? JSON.stringify(error) : ``}`
 				)
-				process.exit(1);
+				process.exit(1)
 			}
 			Object.keys(res).forEach(key => {
 				if (isNaN(key)) {

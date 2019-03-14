@@ -1,44 +1,46 @@
 {
-  "name": "dealerAPI",
-  "version": "0.0.2",
-  "keywords": ["javascript", "node", "module", "boilerplate"],
-  "main": "dist/index.js",
-  "browser": "dist-browser/index.js",
-  "author": "Taylor Austin <taustin@escaladesports.com>",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/escaladesports/javascript-module-boilerplate.git"
-  },
-  "license": "MIT",
-  "scripts": {
-    "analyze": "esca-scripts analyze --input './src/inject.js' --browser",
-    "build": "run-p build:node && cp -av ./options/* ./dist/",
-    "build:node": "babel-node ./src/index.js",
-    "build:main":
-      "esca-scripts build --input src --output dist --babel --multiple",
-    "build:browser":
-      "esca-scripts build --input './src/index.js' --output './dist-browser/index.js' --component --browser --minify --name moduleBoilerplate",
-    "dev":
-      "esca-scripts dev ---input './dev/dev.js, ./dev/index.html' --browser",
-    "prepublishOnly": "npm run build",
-    "reset": "esca-scripts reset",
-    "test": "esca-scripts test",
-    "travis":
-      "opn https://travis-ci.org/escaladesports/javascript-module-boilerplate/branches",
-    "encrypt": "envdotjs",
-    "unencrypt": "envdotjs --unencrypt"
-  },
-  "devDependencies": {
-    "esca-scripts": "^0.14.1",
-    "npm-run-all": "^4.1.2"
-  },
-  "dependencies": {
-    "axios": "^0.18.0",
-    "babel-runtime": "^6.26.0",
-    "envdotjs": "^1.1.8",
-    "fetch-retry": "^1.2.1",
-    "fs-extra": "^5.0.0",
-    "united-states": "^2.0.0",
-    "zipcodes": "^6.0.0"
-  }
+	"name": "dealerAPI",
+	"version": "0.0.2",
+	"keywords": [
+		"javascript",
+		"node",
+		"module",
+		"boilerplate"
+	],
+	"main": "dist/index.js",
+	"browser": "dist-browser/index.js",
+	"author": "Taylor Austin <taustin@escaladesports.com>",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/escaladesports/javascript-module-boilerplate.git"
+	},
+	"license": "MIT",
+	"scripts": {
+		"analyze": "esca-scripts analyze --input './src/inject.js' --browser",
+		"build:dev": "NODE_ENV=development run-p build:node && cp -av ./options/* ./dist/",
+		"build:prod": "NODE_ENV=production run-p build:node && cp -av ./options/* ./dist/",
+		"build:node": "babel-node ./src/index.js",
+		"build:main": "esca-scripts build --input src --output dist --babel --multiple",
+		"build:browser": "esca-scripts build --input './src/index.js' --output './dist-browser/index.js' --component --browser --minify --name moduleBoilerplate",
+		"dev": "esca-scripts dev ---input './dev/dev.js, ./dev/index.html' --browser",
+		"prepublishOnly": "npm run build",
+		"reset": "esca-scripts reset",
+		"test": "esca-scripts test",
+		"travis": "opn https://travis-ci.org/escaladesports/javascript-module-boilerplate/branches",
+		"encrypt": "envdotjs",
+		"unencrypt": "envdotjs --unencrypt"
+	},
+	"devDependencies": {
+		"esca-scripts": "^0.14.1",
+		"npm-run-all": "^4.1.2"
+	},
+	"dependencies": {
+		"axios": "^0.18.0",
+		"babel-runtime": "^6.26.0",
+		"envdotjs": "^1.1.8",
+		"fetch-retry": "^1.2.1",
+		"fs-extra": "^5.0.0",
+		"united-states": "^2.0.0",
+		"zipcodes": "^6.0.0"
+	}
 }
