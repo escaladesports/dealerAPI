@@ -1,9 +1,10 @@
-require('envdotjs').load()
+require('dotenv').config()
 
 module.exports = [
  {
   name: 'goalrilla',
-  key: process.env.GOALRILLA_KEY
+  key: process.env.GOALRILLA_KEY,
+  dicksWeb: `https://www.dickssportinggoods.com/f/goalrilla-basketball-hoops`
  },
  {
   name: 'bear',
