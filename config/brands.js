@@ -4,7 +4,7 @@ module.exports = [
  {
   name: 'goalrilla',
   key: process.env.GOALRILLA_KEY,
-  dicksWeb: `https://www.dickssportinggoods.com/f/goalrilla-basketball-hoops`
+  dicksWeb: `https://www.dickssportinggoods.com/f/goalrilla-basketball-hoops?camp=Part:​Goalrilla​::​SubNavLink​:​VisitHoops`
  },
  {
   name: 'bear',
